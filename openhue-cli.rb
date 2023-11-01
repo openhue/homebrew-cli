@@ -5,12 +5,12 @@
 class OpenhueCli < Formula
   desc "OpenHue CLI is a command-line interface for interacting with Philips Hue smart lighting systems"
   homepage "https://github.com/openhue/homebrew-cli"
-  version "0.3.0"
+  version "0.3.1"
   license "Apache License 2.0"
 
   on_macos do
-    url "https://github.com/openhue/openhue-cli/releases/download/0.3.0/openhue_Darwin_all.tar.gz"
-    sha256 "a32b7d94052f96f5b5d4d6cfec6e2148e45f8e7c54253b0a532ffa580525d615"
+    url "https://github.com/openhue/openhue-cli/releases/download/0.3.1/openhue_Darwin_all.tar.gz"
+    sha256 "338944bd29ec91e3f74b4c957b0223e94b1e602cc670135303e5aba4e3525586"
 
     def install
       bin.install "openhue"
@@ -18,17 +18,17 @@ class OpenhueCli < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/openhue/openhue-cli/releases/download/0.3.0/openhue_Linux_x86_64.tar.gz"
-      sha256 "20ee12fd77141e2c2eff50a5fec2bdc50e26462d4a94d7d7db1fee51cddd246c"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/openhue/openhue-cli/releases/download/0.3.1/openhue_Linux_arm64.tar.gz"
+      sha256 "b573341141502a43c2b29465fe2b93848c114da4de746f40e5e2a6e91e823888"
 
       def install
         bin.install "openhue"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/openhue/openhue-cli/releases/download/0.3.0/openhue_Linux_arm64.tar.gz"
-      sha256 "c13f60bdff6c5585f1d8a5382ff9cff360089ba4e1bdb4eb4c3181283c52ecd4"
+    if Hardware::CPU.intel?
+      url "https://github.com/openhue/openhue-cli/releases/download/0.3.1/openhue_Linux_x86_64.tar.gz"
+      sha256 "c3467dbfa939440da23f046fd47a1684c5858df200e4550e10279e0b78502128"
 
       def install
         bin.install "openhue"
